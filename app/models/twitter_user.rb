@@ -7,4 +7,8 @@ class TwitterUser < ActiveRecord::Base
     end
   end
 
+  def tweets_stale?
+    Time.now.utc - self.tweets.first.updated_at > 900
+  end
+
 end

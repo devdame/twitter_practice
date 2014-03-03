@@ -9,6 +9,10 @@ get '/:username' do
   if @user.tweets.empty?
     @user.get_tweets
   end
+  if @user.tweets_stale?
+    @user.tweets.destroy_all
+    @user.get_tweets
+  end
   @tweets = @user.tweets.limit(10)
   erb :username
 end
