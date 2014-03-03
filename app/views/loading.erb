@@ -1,0 +1,20 @@
+<div class="container">
+    <h1>Please Wait While Your Tweets are Being Loaded!</h1>
+    <img src="/ajax-loader.gif">
+</div>
+
+<script>
+$(document).ready(function() {
+
+  var data = {username: "<%=@user.username%>"};
+
+  $.post('/refresh_tweets', data, function(serverResponse){
+
+    $(".container").empty();
+
+    $(".container").append(serverResponse);
+
+  });
+
+});
+</script>

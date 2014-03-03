@@ -19,6 +19,9 @@ gem 'shotgun'
 
 gem 'twitter'
 
+gem 'pry'
+gem 'pry-nav'
+
 group :test do
   gem 'faker'
   gem 'rspec'
