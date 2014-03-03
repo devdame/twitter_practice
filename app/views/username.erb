@@ -1,5 +1,5 @@
 <ul>
-  <%@timeline.each do |tweet|%>
-    <li><%=tweet.text%></li>
+  <%@tweets.each do |tweet|%>
+    <li><%=tweet.text%><br><%=tweet.created_at%></li>
   <%end%>
 </ul>

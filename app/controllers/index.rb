@@ -3,10 +3,13 @@ get '/' do
   erb :index
 end
 
-
 get '/:username' do
-  @user = params[:username]
-  @timeline = $client.user_timeline(@user).take(10)
+  @user = TwitterUser.find_by_username(params[:username])
+  @user = TwitterUser.create(username: params[:username]) unless @user
+  if @user.tweets.empty?
+    @user.get_tweets
+  end
+  @tweets = @user.tweets.limit(10)
   erb :username
 end
 
